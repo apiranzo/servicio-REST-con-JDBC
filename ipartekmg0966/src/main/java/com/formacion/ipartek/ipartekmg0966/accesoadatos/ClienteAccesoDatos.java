@@ -14,7 +14,7 @@ public class ClienteAccesoDatos {
 	}
 	
 	public static List<ClienteSimplificadoDTO> obtenerClientesSimplificados(){
-		return enTransaccion(em -> em.createQuery("select c.codigo, c.nombre, c.identificador from Cliente c", ClienteSimplificadoDTO.class).getResultList());
+		return enTransaccion(em -> em.createQuery("select c.codigo, c.nombre, c.identificador, c.activo from Cliente c", ClienteSimplificadoDTO.class).getResultList());
 	}
 	
 	public static Cliente obtenerClientePorCodigo(Long codigo) {

@@ -24,6 +24,7 @@ public class ClienteRest {
 	}
 	
 	@GET
+	@Path("/simplificado")
 	public List<ClienteSimplificadoDTO> obtenerClienteSimplificadoDTO(){
 		return ClienteAccesoDatos.obtenerClientesSimplificados();
 	}

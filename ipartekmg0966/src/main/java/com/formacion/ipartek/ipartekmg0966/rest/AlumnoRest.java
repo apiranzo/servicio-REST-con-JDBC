@@ -3,6 +3,7 @@ package com.formacion.ipartek.ipartekmg0966.rest;
 import java.util.List;
 
 import com.formacion.ipartek.ipartekmg0966.accesoadatos.AlumnoAccesoDatos;
+import com.formacion.ipartek.ipartekmg0966.dtos.AlumnoSimplificadoDTO;
 import com.formacion.ipartek.ipartekmg0966.entidades.Alumno;
 
 import jakarta.ws.rs.DELETE;
@@ -20,6 +21,12 @@ public class AlumnoRest {
 	@GET
 	public List<Alumno> obtenerAlumno(){
 		return AlumnoAccesoDatos.obtenerAlumnos();
+	}
+	
+	@GET
+	@Path("/simplificados")
+	public List<AlumnoSimplificadoDTO> obtenerAlumnoSimplificadosDTO(){
+		return AlumnoAccesoDatos.obtenerAlumnosSimplificados();
 	}
 	
 	@GET

@@ -8,6 +8,11 @@ servers:
 tags:
   - name: cursos
   - name: resenas
+  - name: profesores
+  - name: alumnos
+  - name: clientes
+  - name: imparticiones
+
 paths:
   /cursos:
     get:
@@ -158,6 +163,345 @@ paths:
         '204':
           description: NO CONTENT
     
+  /alumnos:
+      get:
+        tags:
+          - alumnos
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                  schema:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Alumnos'
+  /alumnos/{codigo}:
+      get:
+        tags:
+          - alumnos
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Alumnos'
+          '404':
+            description: NOT FOUND
+
+      post:
+          tags:
+            - alumnos
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Alumnos'
+            required: true
+          responses:
+            '201':
+              description: CREATED
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Alumnos'
+
+      put:
+        tags:
+          - alumnos
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alumnos'
+          required: true
+        responses:
+          '200':
+            description: OK
+
+      delete:
+        tags:
+          - alumnos
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '204':
+            description: NO CONTENT
+  
+  /profesores:
+      get:
+        tags:
+          - profesores
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                  schema:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Profesores'
+  /profesores/{codigo}:
+      get:
+        tags:
+          - profesores
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Profesores'
+          '404':
+            description: NOT FOUND
+
+      post:
+          tags:
+            - profesores
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Profesores'
+            required: true
+          responses:
+            '201':
+              description: CREATED
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Profesores'
+
+      put:
+        tags:
+          - profesores
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profesores'
+          required: true
+        responses:
+          '200':
+            description: OK
+
+      delete:
+        tags:
+          - profesores
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '204':
+            description: NO CONTENT
+
+  /clientes:
+      get:
+        tags:
+          - clientes
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                  schema:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Clientes'
+  /clientes/{codigo}:
+      get:
+        tags:
+          - clientes
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Clientes'
+          '404':
+            description: NOT FOUND
+
+      post:
+          tags:
+            - clientes
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Clientes'
+            required: true
+          responses:
+            '201':
+              description: CREATED
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Clientes'
+
+      put:
+        tags:
+          - clientes
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clientes'
+          required: true
+        responses:
+          '200':
+            description: OK
+
+      delete:
+        tags:
+          - clientes
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '204':
+            description: NO CONTENT
+
+  /imparticiones:
+      get:
+        tags:
+          - imparticiones
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                  schema:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Imparticiones'
+  /imparticiones/{codigo}:
+      get:
+        tags:
+          - imparticiones
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Imparticiones'
+          '404':
+            description: NOT FOUND
+
+      post:
+          tags:
+            - imparticiones
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Imparticiones'
+            required: true
+          responses:
+            '201':
+              description: CREATED
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Imparticiones'
+
+      put:
+        tags:
+          - imparticiones
+        parameters:
+          - name: codigo
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Imparticiones'
+          required: true
+        responses:
+          '200':
+            description: OK
+
+      delete:
+        tags:
+          - imparticiones
+        parameters:
+          - name: id
+            in: path
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          '204':
+            description: NO CONTENT
 
 components:
   schemas:
@@ -201,5 +545,101 @@ components:
         curso:
           $ref: '#/components/schemas/Cursos'
         profesor:
-          type: object
+          $ref: '#/components/schemas/Profesores'
+
+    Profesores:
+      type: object
+      properties:
+        codigo:
+          type: integer
+          format: int64
+        nss:
+          type: integer
+        nombre:
+          type: string
+        apellidos:
+          type: string
+        fNacimiento:
+          type: number
+        dni:  
+          type: string
+        direccion:
+          type: string
+        poblacion:
+          type: string
+        codigopostal:
+          type: integer
+        telefono:
+          type: integer
+        email:
+          type: string
+        activo: 
+          type: boolean
+
+    Alumnos:
+      type: object
+      properties:
+        codigo:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        apellidos:
+          type: string
+        fNacimiento:
+          type: number
+        direccion:
+          type: string
+        poblacion:
+          type: string
+        codigopostal:
+          type: integer
+        telefono:
+          type: integer
+        email:
+          type: string
+        dni:  
+          type: string
+        nHermanos:
+          type: integer
+        activo: 
+          type: boolean  
+
+    Clientes:
+      type: object
+      properties:
+        codigo:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        email:
+          type: string
+        telefono:
+          type: integer
+        direccion:
+          type: string
+        poblacion:
+          type: string
+        codigopostal:
+          type: integer
+        identificador:
+          type: string
+        activo: 
+          type: boolean  
+
+    Imparticiones:
+      type: object
+      properties:
+        codigo:
+          type: integer
+          format: int64
+        curso:
+          $ref: '#/components/schemas/Cursos'
+        alumno:
+          $ref: '#/components/schemas/Alumnos'
+        fMatriculacion:
+          type: number
+         
+      
           

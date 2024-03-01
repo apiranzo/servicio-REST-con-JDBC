@@ -46,7 +46,7 @@ public class CursoAccesoDatos {
 		return curso;
 	}
 	
-	public static void insertarCurso (Curso curso) {
+	public static void insertarCurso(Curso curso) {
 		enTransaccion(em -> {
 			em.persist(curso);
 			return null;
@@ -54,7 +54,7 @@ public class CursoAccesoDatos {
 		
 	}
 	
-	public static Curso modificarCurso (Curso curso) {
+	public static Curso modificarCurso(Curso curso) {
 		enTransaccion(em -> {
 			em.merge(curso);
 			return null;

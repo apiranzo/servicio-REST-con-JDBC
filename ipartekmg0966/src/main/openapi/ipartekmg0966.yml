@@ -360,6 +360,19 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/Clientes'
+  /clientes/simplificados:
+      get:
+        tags:
+          - clientes
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                  schema:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Clientes'
   /clientes/{codigo}:
       get:
         tags:

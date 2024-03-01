@@ -3,6 +3,7 @@ package com.formacion.ipartek.ipartekmg0966.rest;
 import java.util.List;
 
 import com.formacion.ipartek.ipartekmg0966.accesoadatos.ClienteAccesoDatos;
+import com.formacion.ipartek.ipartekmg0966.dtos.ClienteSimplificadoDTO;
 import com.formacion.ipartek.ipartekmg0966.entidades.Cliente;
 
 import jakarta.ws.rs.DELETE;
@@ -20,6 +21,11 @@ public class ClienteRest {
 	@GET
 	public List<Cliente> obtenerCliente(){
 		return ClienteAccesoDatos.obtenerClientes();
+	}
+	
+	@GET
+	public List<ClienteSimplificadoDTO> obtenerClienteSimplificadoDTO(){
+		return ClienteAccesoDatos.obtenerClientesSimplificados();
 	}
 	
 	@GET

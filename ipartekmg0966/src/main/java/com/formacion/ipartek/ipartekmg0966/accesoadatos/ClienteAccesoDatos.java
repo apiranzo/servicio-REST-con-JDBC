@@ -4,12 +4,17 @@ import static com.formacion.ipartek.ipartekmg0966.accesoadatos.AccesoDatosJpa.en
 
 import java.util.List;
 
+import com.formacion.ipartek.ipartekmg0966.dtos.ClienteSimplificadoDTO;
 import com.formacion.ipartek.ipartekmg0966.entidades.Cliente;
 
 public class ClienteAccesoDatos {
 
 	public static List<Cliente> obtenerClientes(){
 		return enTransaccion(em -> em.createQuery("select c from Cliente c", Cliente.class).getResultList());
+	}
+	
+	public static List<ClienteSimplificadoDTO> obtenerClientesSimplificados(){
+		return enTransaccion(em -> em.createQuery("select c.codigo, c.nombre, c.identificador from Cliente c", ClienteSimplificadoDTO.class).getResultList());
 	}
 	
 	public static Cliente obtenerClientePorCodigo(Long codigo) {

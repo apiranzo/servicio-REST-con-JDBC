@@ -1,0 +1,205 @@
+openapi: '3.0.2'
+info:
+  title: Ipartek MF0966_3
+  version: '1.0'
+servers:
+  - url: http://localhost:8080/ipartekmg0966/api
+
+tags:
+  - name: cursos
+  - name: resenas
+paths:
+  /cursos:
+    get:
+      tags:
+        - cursos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Cursos'
+  /cursos/{codigo}:
+    get:
+      tags:
+        - cursos
+      parameters:
+        - name: codigo
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cursos'
+        '404':
+          description: NOT FOUND
+
+    post:
+        tags:
+          - cursos
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cursos'
+          required: true
+        responses:
+          '201':
+            description: CREATED
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Cursos'
+
+    put:
+      tags:
+        - cursos
+      parameters:
+        - name: codigo
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cursos'
+        required: true
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      tags:
+        - cursos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: NO CONTENT
+    
+  /resenas:
+    get:
+      tags:
+       - resenas
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+                schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Resenas'
+    post:
+        tags:
+          - resenas
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resenas'
+          required: true
+        responses:
+          '201':
+            description: CREATED
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Resenas'
+
+    put:
+      tags:
+        - resenas
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resenas'
+        required: true
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      tags:
+        - resenas
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: NO CONTENT
+    
+
+components:
+  schemas:
+    Cursos:
+      type: object
+      properties:
+        codigo:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        identificador:
+          type: string
+        fInicio:
+          type: object
+        fFin:  
+          type: object
+        nHoras:
+          type: integer
+        temario:
+          type: string
+        activo:
+          type: boolean
+        cliente:
+          type: object
+        precio: 
+          type: number
+        profesor:
+          type: object
+
+    Resenas:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        comentario:
+          type: string
+        alumno:
+          type: object
+        curso:
+          $ref: '#/components/schemas/Cursos'
+        profesor:
+          type: object
+          
